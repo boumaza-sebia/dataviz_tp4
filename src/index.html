@@ -40,6 +40,10 @@
           })])
       .range(d3.schemeBlues[9]); // donné par D3html
 
+      // 6. Créer une nouvelle échelle ordinale
+
+      var zoneScale = d3.scaleOrdinal(d3.schemeCategory10)
+
       // échelle 
       var positionsPersonnages = 
       d3.range(json.nodes.length);	// un tableau d'autant d'element que de personnages 
@@ -51,7 +55,6 @@
         .align(0)
         .round(true);
     
-
        // 4. Afficher une 1e matrice d'adjacence
       matrixViz = svg.selectAll("rect")
       .data(adjancencymatrix)
@@ -67,7 +70,12 @@
       .style("stroke", "black")
       .style("stroke-width", ".2px")
       .style("fill", function (d) {
-        return scale(d.weight);
+        if (d.zone_s == d.zone_t) {
+          return zoneScale(d.zone_s);
+        }
+        else {
+          return "#eee";
+        } 
       })
       .attr("transform", "translate(45, 60)");
 
