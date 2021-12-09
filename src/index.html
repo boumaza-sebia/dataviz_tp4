@@ -10,17 +10,20 @@
 </head>
 
 <body>
+
+  <!--<label for="scheduling-select">Sélectionnez un ordonnancement:</label>-->
+
+  <select name="scheduling" id="scheduling-select">
+    <option value="appearances">Apparitions</option>
+    <option value="zones">Zones</option>
+    <option value="influences">Influences</option>
+  </select>
+
+
+
   <div id="visu-tp4">
-    <!--<label for="scheduling-select">Sélectionnez un ordonnancement:</label>-->
-
-    <select name="scheduling" id="scheduling-select">
-      <option value="appearances">Apparitions</option>
-      <option value="zones">Zones</option>
-      <option value="influences">Influences</option>
-    </select>
-
-
   </div>
+
   <script>
     // Definition de la taille du svg
     const margin = { top: 0, right: 30, bottom: 20, left: 10 },
