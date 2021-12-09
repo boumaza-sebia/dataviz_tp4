@@ -99,6 +99,9 @@
         .text(function(d) {
           console.log(d.character);
           return d.character;
+        })
+        .attr("dx",function(d) {
+          return echellexy(d.id);
         });
 
     });
