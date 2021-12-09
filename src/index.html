@@ -24,6 +24,7 @@
     .attr("height", height)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
 
     // 2 . Chargement des donnéels
     d3.json("../data/got_social_graph.json").then(function(json) {
@@ -45,6 +46,7 @@
       .attr("width", 5)
       .attr("height", 5)
       .attr("x", function (d) {
+        console.log(d.x);
         return (d.x);
       })
       .attr("y", function (d) {
