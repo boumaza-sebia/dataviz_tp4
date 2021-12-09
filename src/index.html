@@ -33,11 +33,11 @@
       console.log(adjancencymatrix[0]);
 
       // 3. Créer un domaine pour notre échelle
-      var scale = d3.scaleQuantize() 
-      .domain([0, 
-          d3.max(adjancencymatrix, function (d) {
+      const max_weight = d3.max(adjancencymatrix, function (d) {
             return parseInt(d.weight);
-          })])
+          })
+      var scale = d3.scaleQuantize() 
+      .domain([0, max_weight])
       .range(d3.schemeBlues[9]); // donné par D3html
 
       // 6. Créer une nouvelle échelle ordinale
@@ -76,6 +76,9 @@
         else {
           return "#eee";
         } 
+      })
+      .style("opacity", function (d) {
+         return (d.weight * 100 / max_weight);
       })
       .attr("transform", "translate(45, 60)");
 
