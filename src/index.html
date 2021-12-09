@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <div id="visu-tp4"></div>
   <script>
     // Definition de la taille du svg
     const margin = { top: 0, right: 30, bottom: 20, left: 10 },
@@ -35,10 +36,9 @@
       var scale = d3.scaleQuantize() 
       .domain([0, 
           d3.max(adjancencymatrix, function (d) {
-            console.log(d.weight);
             return parseInt(d.weight);
           })])
-      .range(d3.schemeBlues[9]); // donné par D3
+      .range(d3.schemeBlues[9]); // donné par D3html
 
        // 4. Afficher une 1e matrice d'adjacence
       matrixViz = svg.selectAll("rect")
