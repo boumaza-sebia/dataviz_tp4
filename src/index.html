@@ -58,10 +58,10 @@
       .attr("width", echellexy.bandwidth())
       .attr("height", echellexy.bandwidth())
       .attr("x", function (d) {
-        return (d.x  * echellexy.bandwidth());
+        return (echellexy(d.x));
       })
       .attr("y", function (d) {
-        return (d.y * echellexy.bandwidth() );
+        return (echellexy(d.y));
       })
       .style("stroke", "black")
       .style("stroke-width", ".2px")
