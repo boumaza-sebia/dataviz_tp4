@@ -81,7 +81,7 @@
         .append("g")
         .selectAll()
         .data(json.nodes)
-        .join("text", function(d) {
+        .join("text", function(e,d) {
           console.log(d.character);
           return d.character;
         })
@@ -91,7 +91,7 @@
         .append("g")
         .selectAll()
         .data(json.nodes)
-        .join("text", function(d) {
+        .join("text", function(e,d) {
           console.log(d.character);
           return d.character;
         });
