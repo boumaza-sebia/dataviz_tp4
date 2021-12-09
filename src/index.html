@@ -35,6 +35,7 @@
       var scale = d3.scaleQuantize() 
       .domain([0, 
           d3.max(adjancencymatrix, function (d) {
+            console.log(d.weight);
             return parseInt(d.weight);
           })])
       .range(d3.schemeBlues[9]); // donné par D3
