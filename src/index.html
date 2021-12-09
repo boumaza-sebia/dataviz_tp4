@@ -34,7 +34,7 @@
       // 3. Créer un domaine pour notre échelle
       const max_weight = d3.max(adjancencymatrix, function (d) {
             return parseInt(d.weight);
-          })
+          });
       var scale = d3.scaleQuantize() 
       .domain([0, max_weight])
       .range(d3.schemeBlues[9]); // donné par D3html
@@ -77,7 +77,7 @@
         } 
       })
       .style("opacity", function (d) {
-         return (d.weight * 100 / max_weight);
+         return ((d.weight * 100 / max_weight) + "%");
       })
       .attr("transform", "translate(45, 60)");
 
