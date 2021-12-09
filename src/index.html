@@ -2,6 +2,8 @@
 <head>
   <meta charset="utf-8" />
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="matrixManagement.js"></script>
+
   <style>
 
   </style>
@@ -22,6 +24,12 @@
     .attr("height", height)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Chargement des donnéels
+    json = d3.json("../data/got_social_graph.json")
+    adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links)
+
+    console.log(adjancencymatrix[0])
 
   </script>
 </body>
