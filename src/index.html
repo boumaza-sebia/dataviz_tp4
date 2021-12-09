@@ -44,7 +44,7 @@
       d3.range(json.nodes.length);	// un tableau d'autant d'element que de personnages 
               // [0, 1, ..., 106]
       var echellexy = d3.scaleBand()
-        .range([0,1000]) // TODO correspond [0, largeur du dessin]
+        .range([0,width]) // TODO correspond [0, largeur du dessin]
         .domain(positionsPersonnages) 
         .paddingInner(0.1) 
         .align(0)
