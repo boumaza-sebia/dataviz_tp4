@@ -68,7 +68,7 @@
       .style("fill", function (d) {
         return scale(d.weight);
       })
-      .attr("transform", "translate(50, 60)");
+      .attr("transform", "translate(40, 60)");
 
       // 5. Axes
 
@@ -102,9 +102,9 @@
           return d.character;
         })
         .attr("dy",function(d) {
-          return echellexy(d.id);
+          return echellexy(d.id) + 10;
         })
-        .attr("dx", -30);
+        .attr("dx", -40);
       
     });
 
