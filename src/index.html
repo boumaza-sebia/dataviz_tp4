@@ -29,27 +29,16 @@
     // 2 . Chargement des donnéels
     d3.json("../data/got_social_graph.json").then(function(json) {
       adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links)
-      //console.log(adjancencymatrix[0])
+      console.log(adjancencymatrix[0])
 
       // 3. Créer un domaine pour notre échelle
-
-      let tabPoids = [] 
-          for (elemt in adjancencymatrix) {
-            tabPoids.push(adjancencymatrix[elemt].weight);
-          }
-          let maxWeigth = Math.max(...tabPoids);
-          console.log(maxWeigth)
-          var scale = d3.scaleQuantize() 
-          .domain([0, maxWeigth]) 
-          .range(d3.schemeBlues[9]); // donné par D3
-
-      /*var scale = d3.scaleQuantize() 
+      var scale = d3.scaleQuantize() 
       .domain([0, 
           d3.max(adjancencymatrix, function (d) {
             console.log(d.weight);
             return parseInt(d.weight);
           })])
-      .range(d3.schemeBlues[9]); // donné par D3*/
+      .range(d3.schemeBlues[9]); // donné par D3
 
        // 4. Afficher une 1e matrice d'adjacence
       matrixViz = svg.selectAll("rect")
