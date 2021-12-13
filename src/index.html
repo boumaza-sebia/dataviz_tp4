@@ -133,9 +133,9 @@
           return d.character;
         })
         .attr("dy",function(d) {
-          return echellexy(d.id) + 5;
+          return echellexy(d.id);
         })
-        .attr("dx", -10)
+        .attr("dx", -15)
         .attr("text-anchor", "end");
     });
 
@@ -157,7 +157,7 @@
 
       rows
         .attr("dy", function(d) {
-          return echellexy(d.id) + 5;
+          return echellexy(d.id);
         });
         
       columns
