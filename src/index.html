@@ -41,8 +41,9 @@
 
   
     // 2 . Chargement des donnéels
-    var adjancencymatrix = {};
+    let adjancencymatrix = {};
     d3.json("../data/got_social_graph.json").then(function(json) {
+      console.log(choix);
       adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, undefined, true);
 
       // 3. Créer un domaine pour notre échelle
