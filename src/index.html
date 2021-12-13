@@ -42,14 +42,18 @@
   
     // 2 . Chargement des donnéels    
     var adjancencymatrix = {};
-    var myjson =  {};
+    var myjson = {};
+    var echellexy;
+    var matrixViz;
+    var rows;
+    var columns;
+    
     d3.json("../data/got_social_graph.json").then(function(json) {
       myjson = json;
       adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, undefined, true);
-    });
 
-    // 3. Créer un domaine pour notre échelle
-    const max_weight = d3.max(adjancencymatrix, function (d) {
+      // 3. Créer un domaine pour notre échelle
+      const max_weight = d3.max(adjancencymatrix, function (d) {
             return parseInt(d.weight);
           });
       var scale = d3.scaleQuantize() 
@@ -62,9 +66,9 @@
 
       // échelle 
       var positionsPersonnages = 
-      d3.range(myjson.nodes.length);	// un tableau d'autant d'element que de personnages 
+      d3.range(json.nodes.length);	// un tableau d'autant d'element que de personnages 
               // [0, 1, ..., 106]
-      var echellexy = d3.scaleBand()
+      echellexy = d3.scaleBand()
         .range([0,width]) // TODO correspond [0, largeur du dessin]
         .domain(positionsPersonnages) 
         .paddingInner(0.1) 
@@ -109,7 +113,7 @@
       var columns = labels
         .append("g")
         .selectAll()
-        .data(myjson.nodes)
+        .data(json.nodes)
         .join("text")
         .text(function(d) {
           return d.character;
@@ -122,7 +126,7 @@
       var rows = labels
         .append("g")
         .selectAll()
-        .data(myjson.nodes)
+        .data(json.nodes)
         .join("text")
         .text(function(d) {
           return d.character;
@@ -131,21 +135,22 @@
           return echellexy(d.id) + 5;
         })
         .attr("dx", -5)
-        .attr("text-anchor", "end");  
+        .attr("text-anchor", "end");
+    });
 
      // 7.1
     function update () {
       var choix = document.getElementById("menu").value;
 
       if (choix == "influences") {
-        adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, influences, true);
+        adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, influences, true);
       } else if (choix == "zones") {
-        adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, zones, true);
+        adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, zones, true);
       } else {
-        adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, appearances, true);
+        adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, appearances, true);
       }
 
-      echellexy.domain(d3.range(myjson.nodes.length)) // ici on met à jour la fonction de calcul des positions qui nous permettra de repositionner. 
+      echellexy.domain(d3.range(json.nodes.length)) // ici on met à jour la fonction de calcul des positions qui nous permettra de repositionner. 
 
       rows
         .attr("dy", function(d) {
