@@ -13,7 +13,7 @@
 
   <!--<label for="scheduling-select">Sélectionnez un ordonnancement:</label>-->
 
-  <select name="menu" id="menu">
+  <select name="menu" id="menu"  onchange="update()">
     <option value="appearances">Apparitions</option>
     <option value="zones">Zones</option>
     <option value="influences">Influences</option>
@@ -41,9 +41,11 @@
 
   
     // 2 . Chargement des donnéels
+
+    var choix = document.getElementById("menu").value;
+    
     let adjancencymatrix = {};
     d3.json("../data/got_social_graph.json").then(function(json) {
-      console.log(choix);
       adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, undefined, true);
 
       // 3. Créer un domaine pour notre échelle
@@ -131,40 +133,42 @@
         .attr("dx", -5)
         .attr("text-anchor", "end");
       
+          // 7.1
+    
+      function update () {
+        if (choix == "influences") {
+          adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, influences, true);
+        } else if (choix == "zones") {
+          adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, zones, true);
+        } else {
+          adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, appearances, true);
+        }
+
+        echellexy.domain(d3.range(json.nodes.length)) // ici on met à jour la fonction de calcul des positions qui nous permettra de repositionner. 
+
+        rows
+          .attr("dy", function(d) {
+            return echellexy(d.id) + 5;
+          });
+        
+        columns
+          .attr("dy", function(d) {
+            return echellexy(d.id);
+          })
+
+        matrixViz.selectAll("rect")
+          .attr("x", function (d) {
+          return (echellexy(d.x));
+          })
+          .attr("y", function (d) {
+          return (echellexy(d.y));
+          })
+      }
+        
     });
 
     
-    // 7.1
-    var choix = document.getElementById("menu").value;
-    if (choix == "influences") {
-      adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, influences, true);
-    } else if (choix == "zones") {
-      adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, zones, true);
-    } else {
-      adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, appearances, true);
-    }
 
-    function update (newPositions) {
-      echellexy.domain(newPositions) // ici on met à jour la fonction de calcul des positions qui nous permettra de repositionner. 
-
-      rows
-        .attr("dy", function(d) {
-          return echellexy(d.id) + 5;
-        });
-      
-      columns
-        .attr("dy", function(d) {
-          return echellexy(d.id);
-        })
-
-      matrixViz.selectAll("rect")
-        .attr("x", function (d) {
-        return (echellexy(d.x));
-        })
-        .attr("y", function (d) {
-        return (echellexy(d.y));
-        })
-    }
       
   
 
