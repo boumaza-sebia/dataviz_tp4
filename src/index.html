@@ -76,7 +76,7 @@
         .round(true);
     
        // 4. Afficher une 1e matrice d'adjacence
-      matrixViz = svg.selectAll("rect")
+      matrixViz = svg.append("g").selectAll("rect")
       .data(adjancencymatrix)
       .join("rect")
       .attr("width", echellexy.bandwidth())
