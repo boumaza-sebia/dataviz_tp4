@@ -104,13 +104,13 @@
 
       // 5. Axes
 
-      var labels = d3.select("svg")
+      labels = d3.select("svg")
         .append("g")
         .attr("transform", "translate(60, 60)")
         .style("font-size", "8px")
         .style("font-family", "sans-serif");
 
-      var columns = labels
+      columns = labels
         .append("g")
         .selectAll()
         .data(json.nodes)
@@ -123,7 +123,7 @@
         })
         .attr("transform", "rotate(-90)"); // on tourne tout l'axe de 90°
 
-      var rows = labels
+      rows = labels
         .append("g")
         .selectAll()
         .data(json.nodes)
