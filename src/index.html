@@ -143,10 +143,10 @@
       var choix = document.getElementById("menu").value;
       console.log(choix);
 
-      if (choix == "influences") {
+      if (choix === "influences") {
         adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, influences, true);
         console.table(adjancencymatrix);
-      } else if (choix == "zones") {
+      } else if (choix === "zones") {
         adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, zones, true);
         console.table(adjancencymatrix);
 
