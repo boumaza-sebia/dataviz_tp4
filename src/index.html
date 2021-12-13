@@ -145,14 +145,14 @@
 
       if (choix === "influences") {
         adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, influences, true);
-        console.table(adjancencymatrix);
+        console.table("1");
       } else if (choix === "zones") {
         adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, zones, true);
-        console.table(adjancencymatrix);
+        console.table("2");
 
       } else {
         adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, appearances, true);
-        console.table(adjancencymatrix);
+        console.table("3");
 
       }
 
