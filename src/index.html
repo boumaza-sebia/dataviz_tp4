@@ -47,7 +47,7 @@
     var matrixViz;
     var rows;
     var columns;
-    
+
     d3.json("../data/got_social_graph.json").then(function(json) {
       myjson = json;
       adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, undefined, true);
@@ -143,14 +143,14 @@
       var choix = document.getElementById("menu").value;
 
       if (choix == "influences") {
-        adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, influences, true);
+        adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, influences, true);
       } else if (choix == "zones") {
-        adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, zones, true);
+        adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, zones, true);
       } else {
-        adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, appearances, true);
+        adjancencymatrix = createAdjacencyMatrix(myjson.nodes, myjson.links, appearances, true);
       }
 
-      echellexy.domain(d3.range(json.nodes.length)) // ici on met à jour la fonction de calcul des positions qui nous permettra de repositionner. 
+      echellexy.domain(d3.range(myjson.nodes.length)) // ici on met à jour la fonction de calcul des positions qui nous permettra de repositionner. 
 
       rows
         .attr("dy", function(d) {
