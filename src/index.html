@@ -76,7 +76,7 @@
         .round(true);
     
       // 4. Afficher une 1e matrice d'adjacence
-      matrixViz = d3.select("svg").append("g").attr("transform", "translate(45, 60)");
+      matrixViz = d3.select("svg").append("g").attr("transform", "translate(60, 60)");
 
       matrixViz.selectAll()
       .data(adjancencymatrix)
@@ -157,12 +157,12 @@
 
       rows
         .attr("dy", function(d) {
-          return echellexy(d.id) + 5;
+          return echellexy(d.id);
         });
         
       columns
         .attr("dy", function(d) {
-          return echellexy(d.id) - 5;
+          return echellexy(d.id);
         })
 
       matrixViz.selectAll("rect")
