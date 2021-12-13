@@ -50,7 +50,7 @@
 
     d3.json("../data/got_social_graph.json").then(function(json) {
       myjson = json;
-      adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, positions = influences, true);
+      adjancencymatrix = createAdjacencyMatrix(json.nodes, json.links, undefined, true);
 
       // 3. Créer un domaine pour notre échelle
       const max_weight = d3.max(adjancencymatrix, function (d) {
@@ -70,7 +70,7 @@
               // [0, 1, ..., 106]
       echellexy = d3.scaleBand()
         .range([0,width]) // TODO correspond [0, largeur du dessin]
-        .domain(positionsPersonnages) 
+        .domain(zones) 
         .paddingInner(0.1) 
         .align(0)
         .round(true);
