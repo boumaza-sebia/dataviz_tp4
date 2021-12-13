@@ -154,24 +154,24 @@
       // 7.2
       rows
         .transition()
-	    	.delay(1000) 
-		    .duration(2000)
+	    	.delay(500) 
+		    .duration(4000)
         .attr("dy", function(d) {
           return echellexy(d.id);
         });
         
       columns
         .transition()
-	    	.delay(1000) 
-		    .duration(2000)
+	    	.delay(500) 
+		    .duration(4000)
         .attr("dy", function(d) {
           return echellexy(d.id);
         })
 
       matrixViz.selectAll("rect")
         .transition()
-	    	.delay(1000) 
-		    .duration(2000)
+	    	.delay(500) 
+		    .duration(4000)
         .attr("x", function (d) {
           return (echellexy(d.x));
         })
