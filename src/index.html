@@ -145,18 +145,14 @@
 
       if (choix === "influences") {
         echellexy.domain(influences); 
-        console.table("1");
+        console.log("1");
       } else if (choix === "zones") {
         echellexy.domain(zones);        
-        console.table("2");
-
+        console.log("2");
       } else {
         echellexy.domain(appearances);
-        console.table("3");
-
+        console.log("3");
       }
-
-      //echellexy.domain(d3.range(myjson.nodes.length)) // ici on met à jour la fonction de calcul des positions qui nous permettra de repositionner. 
 
       rows
         .attr("dy", function(d) {
@@ -177,7 +173,5 @@
         })
     }
       
-  
-
   </script>
 </body>
