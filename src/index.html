@@ -154,7 +154,7 @@
       // 7.2
       rows
         .transition()
-	    	.delay(500) 
+	    	.delay(function(d, i) { return x(i) * 4; }) 
 		    .duration(4000)
         .attr("dy", function(d) {
           return echellexy(d.id);
@@ -162,7 +162,7 @@
         
       columns
         .transition()
-	    	.delay(500) 
+	    	.delay(function(d, i) { return x(i) * 4; }) 
 		    .duration(4000)
         .attr("dy", function(d) {
           return echellexy(d.id);
@@ -170,7 +170,7 @@
 
       matrixViz.selectAll("rect")
         .transition()
-	    	.delay(500) 
+	    	.delay(function(d, i) { return x(i) * 4; }) 
 		    .duration(4000)
         .attr("x", function (d) {
           return (echellexy(d.x));
